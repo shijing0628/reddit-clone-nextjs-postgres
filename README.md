@@ -8,7 +8,7 @@ Backend: port=5000 and run the command:
 npm start
 ```
 
-### some commands
+### some commands for backend (api)
 
 - npm i -g typeorm
 - typeorm init --database postgres
@@ -17,6 +17,13 @@ npm start
 - npm i -D @types/bcrypt
 - npm i class-transformer // postman hide password and id
 - class-validate in entities/User.ts
+
   <br>
   ![](2021-02-12-09-41-40.png)
   <br>
+
+- typeorm entity:create --name Post (create new entity)
+- https://typeorm.io/#/using-cli ("typeorm": "ts-node ./node_modules/typeorm/cli.js")
+- npm run typeorm schema:drop
+- npm run typeorm migration:generate -- --name create-users-table (generate migration folder)
+- npm run typeorm migration:run

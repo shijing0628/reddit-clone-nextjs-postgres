@@ -1,6 +1,6 @@
 import {Request,Response,NextFunction} from 'express';
 import jwt from 'jsonwebtoken'
-import { User } from "../src/entities/User";
+import User from "../src/entities/User";
 
 export default async(req:Request,res:Response,next:NextFunction)=>{
  try{
