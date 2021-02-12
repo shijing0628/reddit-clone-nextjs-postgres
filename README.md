@@ -16,6 +16,7 @@ npm start
 - check tsconfig file, adding stuff
 - npm i -D @types/bcrypt
 - npm i class-transformer // postman hide password and id
+- class-validate in entities/User.ts
   <br>
   ![](2021-02-12-09-41-40.png)
   <br>
