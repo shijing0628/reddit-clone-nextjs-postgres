@@ -14,3 +14,8 @@ npm start
 - typeorm init --database postgres
 - npm i ts-node@latest @types/node@latest typescript@latest
 - check tsconfig file, adding stuff
+- npm i -D @types/bcrypt
+- npm i class-transformer // postman hide password and id
+  <br>
+  ![](2021-02-12-09-41-40.png)
+  <br>
