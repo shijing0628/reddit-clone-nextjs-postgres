@@ -17,7 +17,8 @@ css shadowlord link: https://noeldelgado.github.io/shadowlord/#a41771 (generate 
 
 reference link: https://github.com/hidjou/classsed-reddit-clone
 
-**some commands:**
+**some commands and highlights:**
 
 - npm install --save-dev typescript @types/react
 - npm run dev will generate content of tsconfig.json
+- how to show validation in register page (register.tsx) by using "classnames"

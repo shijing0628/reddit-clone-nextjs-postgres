@@ -22,6 +22,7 @@ https://typeorm.io/#/using-cli
 
   <br>
   ![](2021-02-12-09-41-40.png)
+
   <br>
 
 - typeorm entity:create --name Post (create new entity)

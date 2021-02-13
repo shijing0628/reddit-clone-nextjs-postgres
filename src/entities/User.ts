@@ -1,4 +1,4 @@
-import { IsEmail, MinLength } from "class-validator";
+import { IsEmail, Length, MinLength } from "class-validator";
 import { Entity as TOEntity, Column, Index,  BeforeInsert, OneToMany} from "typeorm";
 import bcrypt from 'bcrypt'
 import {Exclude} from 'class-transformer'
@@ -16,20 +16,21 @@ export default class User extends Entity {
     }
 
     @Index()
-    @IsEmail()
+    @IsEmail(undefined,{message:'Must be a valid email address'})
+    @Length(1,255,{message:'Email is empty'})
     @Column({unique:true})
     email: string;
 
   
     @Index()
-    @MinLength(3,{message:'Username must be at least 3 charactors.'})
+    @MinLength(3,{message:'Must be at least 3 charactors.'})
     @Column({unique:true})
     username: string;
 
     
     @Exclude()
     @Index()
-    @MinLength(6)
+    @MinLength(6,{message:'Must be at least 6 charactors.'})
     @Column()
     password: string;
 
