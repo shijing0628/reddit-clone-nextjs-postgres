@@ -22,3 +22,4 @@ reference link: https://github.com/hidjou/classsed-reddit-clone
 - npm install --save-dev typescript @types/react
 - npm run dev will generate content of tsconfig.json
 - how to show validation in register page (register.tsx) by using "classnames"
+- npm i @svgr/webpack --save-dev (install this for logo svg file)
