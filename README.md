@@ -10,6 +10,8 @@ npm start
 
 ### some commands for backend (api)
 
+https://typeorm.io/#/using-cli
+
 - npm i -g typeorm
 - typeorm init --database postgres
 - npm i ts-node@latest @types/node@latest typescript@latest

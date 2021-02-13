@@ -20,7 +20,7 @@ app.use(cookieParser())
 
 
 
-app.get('./',(req,res)=>console.log('hello world'))
+app.get('./',()=>console.log('hello world'))
 app.use('/api/auth', authRoutes)
 app.use('/api/posts', postRoutes)
 app.use('/api/subs', subsRoutes)

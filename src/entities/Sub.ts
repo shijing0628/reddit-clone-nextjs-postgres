@@ -2,7 +2,6 @@
 import { Entity as TOEntity, Column, Index, ManyToOne, JoinColumn, OneToMany} from "typeorm";
 import User from './User'
 import Entity from './Entity'
-import { makeId, slugify } from "../../util/helpers";
 import Post from './Post'
 
 @TOEntity("subs")
