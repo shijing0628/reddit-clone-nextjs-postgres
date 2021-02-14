@@ -1,71 +1,87 @@
+import {
+  Entity as TOEntity,
+  Column,
+  Index,
+  BeforeInsert,
+  ManyToOne,
+  JoinColumn,
+  OneToMany,
+  AfterLoad,
+} from 'typeorm'
+import { Exclude, Expose } from 'class-transformer'
 
-import { Entity as TOEntity, Column, Index,  BeforeInsert, ManyToOne, JoinColumn, OneToMany} from "typeorm";
-import User from './User'
 import Entity from './Entity'
-import { makeId, slugify } from "../../util/helpers";
-import Sub from "./Sub";
-import Comment from "./Comment";
-import { Expose } from "class-transformer";
+import User from './User'
+import { makeId, slugify } from '../../util/helpers'
+import Sub from './Sub'
+import Comment from './Comment'
+import Vote from './Vote'
+import { EXDEV } from 'constants'
 
-
-@TOEntity("posts")
-
+@TOEntity('posts')
 export default class Post extends Entity {
-    
-    constructor(post: Partial<Post>){
-        super()
-        Object.assign(this, post)
-    }
+  constructor(post: Partial<Post>) {
+    super()
+    Object.assign(this, post)
+  }
 
-   @Index()
-   @Column()
-   identifier:string 
+  @Index()
+  @Column()
+  identifier: string // 7 Character Id
+
+  @Column()
+  title: string
+
+  @Index()
+  @Column()
+  slug: string
+
+  @Column({ nullable: true, type: 'text' })
+  body: string
+
+  @Column()
+  subName: string
+
+  @Column()
+  username: string
+
+  @ManyToOne(() => User, (user) => user.posts)
+  @JoinColumn({ name: 'username', referencedColumnName: 'username' })
+  user: User
+
+  @ManyToOne(() => Sub, (sub) => sub.posts)
+  @JoinColumn({ name: 'subName', referencedColumnName: 'name' })
+  sub: Sub
   
-   @Column()
-   title:string 
+  @Exclude()
+  @OneToMany(() => Comment, (comment) => comment.post)
+  comments: Comment[]
 
+  @Exclude()
+  @OneToMany(() => Vote, (vote) => vote.post)
+  votes: Vote[]
 
-   @Index()
-   @Column()
-   slug:string 
+  @Expose() get url(): string {
+    return `/r/${this.subName}/${this.identifier}/${this.slug}`
+  }
 
-   
-   @Column({nullable:true,type:"text"})
-   body:string 
+  @Expose() get commentCount(): number {
+    return this.comments?.length
+  }
 
-   @Column()
-   subName:string 
+  @Expose() get voteScore(): number {
+    return this.votes?.reduce((prev, curr) => prev + (curr.value || 0), 0)
+  }
 
-   @Column()
-   username:string
+  protected userVote: number
+  setUserVote(user: User) {
+    const index = this.votes?.findIndex((v) => v.username === user.username)
+    this.userVote = index > -1 ? this.votes[index].value : 0
+  }
 
-   @ManyToOne(()=>User, user => user.posts)
-   @JoinColumn({name:'username',referencedColumnName:'username'})
-    user:User;
-
-   @ManyToOne(()=>Sub, sub => sub.posts)
-   @JoinColumn({name:'subName',referencedColumnName:'name'})
-   sub:Sub;
-
-   @OneToMany(()=>Comment,comment=>comment.post,{nullable:false})
-   comments:Comment[]
-
-   @Expose() get url():string {
-      return `/r/${this.subName}/${this.identifier}/${this.slug}`  
-   }
-
-//    protected url:string
-//    @AfterLoad()
-//    createFields(){
-//        this.url=`/r/${this.subName}/${this.identifier}/${this.slug}`
-//    }
-
-
-    @BeforeInsert()
-    makeIdAndSlug(){
-        this.identifier = makeId(7)
-        this.slug = slugify(this.title)
-    }
-
+  @BeforeInsert()
+  makeIdAndSlug() {
+    this.identifier = makeId(7)
+    this.slug = slugify(this.title)
+  }
 }
-

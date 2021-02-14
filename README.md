@@ -30,3 +30,10 @@ https://typeorm.io/#/using-cli
 - npm run typeorm schema:drop
 - npm run typeorm migration:generate -- --name create-users-table (generate migration folder)
 - npm run typeorm migration:run
+
+  <br>
+  database structure:
+  ![](2021-02-13-19-29-36.png)
+
+<br>
+https://icomoon.io/app/#/select  icon moon

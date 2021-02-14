@@ -4,6 +4,7 @@ import axios from 'axios';
 import Navbar from '../components/Navbar'
 import { Fragment } from 'react';
 import {useRouter} from 'next/router'
+import '../styles/icons.css'
 
 axios.defaults.baseURL = 'http://localhost:5000/api'
 //always want to send cookie to client side

@@ -8,6 +8,7 @@ import dotenv from 'dotenv'
 import cookieParser from 'cookie-parser'
 import postRoutes from './routes/posts'
 import subsRoutes from './routes/subs'
+import miscRoutes from './routes/misc'
 import cors from 'cors'
 
 
@@ -30,7 +31,7 @@ app.get('./',()=>console.log('hello world'))
 app.use('/api/auth', authRoutes)
 app.use('/api/posts', postRoutes)
 app.use('/api/subs', subsRoutes)
-
+app.use('/api/misc', miscRoutes)
 
 
 
