@@ -2,9 +2,10 @@ import '../styles/tailwind.css'
 import { AppProps } from "next/app";
 import axios from 'axios';
 import Navbar from '../components/Navbar'
-import { Fragment } from 'react';
 import {useRouter} from 'next/router'
 import '../styles/icons.css'
+import {AuthProvider} from '../context/auth'
+
 
 axios.defaults.baseURL = 'http://localhost:5000/api'
 //always want to send cookie to client side
@@ -15,10 +16,10 @@ function App({ Component, pageProps }: AppProps) {
   const {pathname} = useRouter()
   const authRoutes=['/register','/login']
   const authRoute = authRoutes.includes(pathname)
-  return <Fragment>
+  return <AuthProvider>
     {!authRoute && <Navbar/>}
      <Component {...pageProps} />
-  </Fragment>
+  </AuthProvider>
  
 }
 
