@@ -35,7 +35,7 @@ https://typeorm.io/#/using-cli
 
   <br>
   database structure:
-  ![](2021-02-13-19-29-36.png)
+  <br>
 
 <br>
 https://icomoon.io/app/#/select  icon moon
