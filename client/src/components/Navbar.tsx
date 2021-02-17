@@ -41,16 +41,16 @@ const Navbar: React.FC = () => {
     <div className="flex">
       { !loading && (authenticated?(
         //show logout button
-        <button className="w-32 py-1 mr-4 leading-5 hollow blue button" onClick={logout}>
+        <button className="w-32 py-1 mr-4 leading-5 rounded-full hollow blue button active:outline-none" onClick={logout}>
           Logout
         </button>
       ):(
          <button>
       <Link href="/login">
-        <a className="w-32 py-1 mr-4 leading-5 hollow blue button">log in</a>
+        <a className="w-32 py-1 mr-4 leading-5 rounded-full hollow blue button">log in</a>
       </Link>
       <Link href="/register">
-        <a className="w-32 py-1 leading-5 blue button">sign up</a>
+        <a className="w-32 py-1 leading-5 rounded-full blue button">sign up</a>
       </Link>
       </button>
       ))}

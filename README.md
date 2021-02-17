@@ -2,10 +2,10 @@
 
 postgresql, typeScript, TailwindCSS, TypeORM, nextjs
 
-Backend: port=5000 and run the command:
+Backend: port=5000 and run the command: (front end 3000) and this command will run both
 
 ```
-npm start
+npm run dev
 ```
 
 ### some commands for backend (api)
@@ -30,6 +30,8 @@ https://typeorm.io/#/using-cli
 - npm run typeorm schema:drop
 - npm run typeorm migration:generate -- --name create-users-table (generate migration folder)
 - npm run typeorm migration:run
+- npm run seed
+- swr : react hooks for data fetching
 
   <br>
   database structure:
@@ -37,3 +39,5 @@ https://typeorm.io/#/using-cli
 
 <br>
 https://icomoon.io/app/#/select  icon moon
+
+![](2021-02-16-18-27-37.png)
